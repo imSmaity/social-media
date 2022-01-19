@@ -1,0 +1,12 @@
+ .link{
+    
+    color: black;
+}
+ .link:hover{
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+.td{
+    text-decoration: none;
+    text-align: center;
+}

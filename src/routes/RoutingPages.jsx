@@ -1,11 +1,19 @@
 import React from 'react'
-import {Home} from '../pages/pages'
+import { BrowserRouter, Route, Routes,  } from 'react-router-dom'
+import {Explore, Home, Login, Profile, Signup} from '../pages/pages'
 
 function RoutingPages() {
+
     return (
-        <>
-            <Home/>
-        </>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home/>}  />
+                <Route path="profile" element={<Profile/>}  />
+                <Route path="explore" element={<Explore/>}  />
+                <Route path={"signup"} element={<Signup/>}  />
+                <Route path="login" element={<Login/>}  />
+            </Routes>
+        </BrowserRouter>
     )
 }
 
