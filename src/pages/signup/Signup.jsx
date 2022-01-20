@@ -21,6 +21,11 @@ const inputAttribute=[
 		placeholder:'Last Name'
 	},
 	{
+		type:'select',
+		name:'gender',
+		placeholder: 'Gender'
+	},
+	{
 		type:'email',
 		name:'email',
 		placeholder:'Email'
@@ -43,7 +48,7 @@ const inputAttribute=[
 ]
 
 function Signup() {
-	const [userData,setUserData]=useState({_id:'',fname:'',lname:'',email:'',dob:'',password:'',rePassword:''})
+	const [userData,setUserData]=useState({_id:'',fname:'',lname:'',gender:'',email:'',dob:'',password:'',rePassword:''})
 
 	function handleInput(e){
 		setUserData({...userData,[e.target.name]:e.target.value})

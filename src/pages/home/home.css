@@ -1,0 +1,13 @@
+#icon{
+    padding-left: 5vh;
+    padding-top: 2vh;
+}
+.bsh{
+    border-right: 1px solid rgba(128, 128, 128, 0.527);
+    border-left: 1px solid rgba(128, 128, 128, 0.527);
+}
+#search{
+    padding: 2px;
+    padding-right: 5vh;
+    border-radius: 1vh;
+}

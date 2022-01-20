@@ -18,7 +18,9 @@ function Login() {
         .then((res)=>{
             if(res.data!==''){
                 if(res.data.password===loginData.password){
-                    localStorage.setItem("_syt2022_",JSON.stringify({fname:res.data.fname,lname:res.data.lname,email:res.data.email}))
+                    localStorage.setItem("_syt2022_",JSON.stringify(
+                        {fname:res.data.fname,lname:res.data.lname,email:res.data.email,avatar:res.data.avatar}
+                    ))
                     dispatch(loginUpdate())
                 }
                 else{

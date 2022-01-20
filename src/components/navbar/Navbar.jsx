@@ -14,16 +14,16 @@ export default function Navbar() {
     return (
         <div className='row container-fluid'>
             <Link to={'/'} className="col-12 td mt-5">
-                <div className='link'>Home</div>
+                <div className='linkl'>Home</div>
             </Link>
             <Link to={'profile'} className="col-12 td mt-5">
-                <div className='link'>Profile</div>
+                <div className='linkl'>Profile</div>
             </Link>
             <Link to={'explore'} className="col-12 td mt-5">
-                <div className='link'>Explore</div>
+                <div className='linkl'>Explore</div>
             </Link>
             <div className="col-12 td mt-5" onClick={logOut}>
-                <div className='link'>Logout</div>
+                <div className='linkl'>Logout</div>
             </div>
         </div>
     )

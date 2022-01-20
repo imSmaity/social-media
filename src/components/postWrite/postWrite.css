@@ -1,0 +1,18 @@
+.bb{
+    border-bottom: 1px solid rgba(172, 170, 170, 0.39);
+}
+.poi{
+    border: none;
+    resize: none;
+}
+.post{
+    padding: .3vh;
+    border-radius: 5px;
+    width: 8vh;
+    font-weight: bold;
+}
+#havatar{
+    border-radius: 50%;
+    height: 7vh;
+    width: 7vh;
+}
