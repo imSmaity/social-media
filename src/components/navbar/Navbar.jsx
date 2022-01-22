@@ -1,22 +1,25 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { logout } from '../../redux/actions'
 import './navbar.css'
 
 export default function Navbar() {
     const dispatch=useDispatch()
-
+    const naviga=useNavigate()
+    
+    const UID=JSON.parse(localStorage.getItem('_syt2022_')).uid
     function logOut(){
         localStorage.removeItem('_syt2022_')
         dispatch(logout())
+        naviga('/login')
     }
     return (
         <div className='row container-fluid'>
-            <Link to={'/'} className="col-12 td mt-5">
+            <Link to={'/home'} className="col-12 td mt-5">
                 <div className='linkl'>Home</div>
             </Link>
-            <Link to={'profile'} className="col-12 td mt-5">
+            <Link to={`/${UID}`} className="col-12 td mt-5">
                 <div className='linkl'>Profile</div>
             </Link>
             <Link to={'explore'} className="col-12 td mt-5">

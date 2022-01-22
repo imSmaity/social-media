@@ -3,25 +3,29 @@ import { useState } from 'react';
 import axios from 'axios'
 import {useDispatch} from 'react-redux'
 import { loginUpdate } from '../../redux/actions';
+import { useNavigate } from 'react-router-dom';
 
 
 function Login() {
     const [loginData,setLoginData]=useState({uid:'',password:''})
     const dispatch= useDispatch()
-    
+    const navigate=useNavigate()
+
     function inputHandle(e){
         setLoginData({...loginData,[e.target.name]:e.target.value})
     }
 
     function login(){
-        axios.post(`${process.env.REACT_APP_USER_SIGNUP}/login`,{uid:loginData.uid})
+        axios.post(`${process.env.REACT_APP_USER_SIGNUP}/search_user`,{uid:loginData.uid})
         .then((res)=>{
             if(res.data!==''){
                 if(res.data.password===loginData.password){
                     localStorage.setItem("_syt2022_",JSON.stringify(
-                        {fname:res.data.fname,lname:res.data.lname,email:res.data.email,avatar:res.data.avatar}
+                        {fname:res.data.fname,lname:res.data.lname,uid:res.data._id,avatar:res.data.avatar,
+                        bio:res.data.bio,following:res.data.following,followers:res.data.followers}
                     ))
                     dispatch(loginUpdate())
+                    navigate(-1)
                 }
                 else{
                     alert("Wrong email or password. Try agein.")

@@ -1,0 +1,18 @@
+.ppp img{
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    border: 2px solid rgba(90, 90, 90, 0.329);
+    padding: 5px;
+    margin-top: -13vh;
+    background-color: white;
+}
+
+#coverP{
+    font-size: xx-large;
+    height: 20vh;
+    font-style: oblique;
+    color: white;
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgb(139, 195, 34) 0%, rgba(74,55,15,1) 0%, rgba(89,68,4,1) 0%, rgb(247, 205, 115) 100%);
+}

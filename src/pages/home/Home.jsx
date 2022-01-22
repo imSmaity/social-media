@@ -1,8 +1,11 @@
 import React from 'react'
-import {Navbar, PostWrite, Search} from '../../components/components'
+import {Navbar, PostWrite, UserList} from '../../components/components'
 import './home.css'
 
+
 function Home() {
+    
+
     return (
         <div className='row'>
             <div className='col-3 '>
@@ -14,8 +17,7 @@ function Home() {
                 <PostWrite/>
             </div>
             <div className='col-3'>
-                <Search/>
-                <p>Who to follow</p>
+                <UserList/>
             </div>
         </div>
     )
