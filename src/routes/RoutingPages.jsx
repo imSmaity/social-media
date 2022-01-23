@@ -1,6 +1,6 @@
 import React from 'react'
 import {Route, Routes,  } from 'react-router-dom'
-import {Explore, Home, Login, Profile, Signup} from '../pages/pages'
+import {Explore, Home, Login, Profile, Signup, UserConnection} from '../pages/pages'
 
 function RoutingPages() {
 
@@ -12,6 +12,8 @@ function RoutingPages() {
             <Route path="explore" element={<Explore/>}  />
             <Route path={"signup"} element={<Signup/>}  />
             <Route path="login" element={<Login/>}  />
+            <Route path="/:uid/followers" element={<UserConnection/>} />
+            <Route path="/:uid/following" element={<UserConnection/>} />
         </Routes>
     )
 }

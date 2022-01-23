@@ -1,0 +1,12 @@
+.fbtn #foll{
+    border: none;
+    text-align: center;
+    padding: 1.5vh;
+}
+.fbtn{
+    text-decoration: none;
+    color: black;
+}
+.fbtn:hover{
+    background-color: rgba(196, 194, 194, 0.452);
+}

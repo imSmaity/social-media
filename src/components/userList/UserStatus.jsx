@@ -16,19 +16,19 @@ export default function UserStatus({user}) {
         }
     },[user,loadList])
 
-    function following(){
+    function following(user){
         const userData=JSON.parse(localStorage.getItem('_syt2022_'))
         userData.following.push(user._id)
-        axios.post(`${process.env.REACT_APP_USER_SIGNUP}/user_update`,userData)
+        axios.post(`${process.env.REACT_APP_USER_SIGNUP}/follow_unfollow`,{state:'follow',userData,FollowedId:user._id})
         .then(()=>{
             localStorage['_syt2022_']=JSON.stringify(userData)
             setLoadList(loadList+1)
         })
     }
-    function unfollow(){
+    function unfollow(user){
         const userData=JSON.parse(localStorage.getItem('_syt2022_'))
         userData.following.splice(userData.following.indexOf(user._id),1)
-        axios.post(`${process.env.REACT_APP_USER_SIGNUP}/user_update`,userData)
+        axios.post(`${process.env.REACT_APP_USER_SIGNUP}/follow_unfollow`,{state:'unfollow',userData,UnfollowedId:user._id})
         .then(()=>{
             localStorage['_syt2022_']=JSON.stringify(userData)
             setLoadList(loadList+1)
@@ -39,8 +39,8 @@ export default function UserStatus({user}) {
         <>
             {
                 youFollowed?
-                <button type='button' onClick={unfollow}>Following</button>:
-                <button type='button' onClick={following}>Follow</button>
+                <button type='button' onClick={()=>unfollow(user)}>Following</button>:
+                <button type='button' onClick={()=>following(user)}>Follow</button>
 
             }
         </>

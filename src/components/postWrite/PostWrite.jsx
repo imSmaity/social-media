@@ -12,11 +12,11 @@ function Write(){
 
 function PostWrite() {
     const avatar=JSON.parse(localStorage.getItem('_syt2022_')).avatar
-
+    const UID=JSON.parse(localStorage.getItem('_syt2022_')).uid
   return (
     <div className='row bb mt-3'>
         <div className='col-1'>
-            <Link to="/">
+            <Link to={`/${UID}`}>
                 <img src={avatar} id='havatar' alt='PP'/>
             </Link>
         </div>

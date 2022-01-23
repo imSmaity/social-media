@@ -2,8 +2,8 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { Navbar, Search } from '../../components/components';
+import { Link, useParams } from 'react-router-dom';
+import { Navbar, UserList } from '../../components/components';
 import './profile.css'
 
 function Profile() {
@@ -28,21 +28,23 @@ function Profile() {
 			</div>
 			<div className='col-md-6 col-12 bsh'>
 				<div className='row bb'>
-					<center>
-						<div className='col-12' id='coverP'>{`${userData.fname.toUpperCase()}`}</div>
-						<div className='col-12 ppp mt-3'>
-							
-								<img src={userData.avatar} alt='pp' />
-							
-						</div>
-						<div className='col-12'>{`${userData.fname} ${userData.lname}`}</div>
-						<div className='col-12'>{`${uid}`}</div>
-					</center>
+			
+					<div className='col-12' id='coverP'>{`${userData.fname.toUpperCase()}`}</div>
+					<div className='col-12 ppp mt-3'>
+						
+							<img src={userData.avatar} alt='pp' />
+						
+					</div>
+					<div className='col-12'>{`${userData.fname} ${userData.lname}`}</div>
+					<div className='col-12'>{`${uid}`}</div>
+					<div className='col-12'>
+						<Link to={`/${userData._id}/following`}>{`${userData.following.length} Following`}</Link>
+						<span><Link to={`/${userData._id}/followers`}>{`${userData.followers.length} Followers`}</Link></span>
+					</div>
 				</div>
 			</div>
 			<div className='col-3'>
-				<Search/>
-				<p>Who to follow</p>
+				<UserList/>
 			</div>
 		</>:
 		<div>Loading...</div>
