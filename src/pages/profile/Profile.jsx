@@ -16,7 +16,7 @@ function Profile() {
 		setUserData(res.data)
 		setLoading(true)
 		})
-	},[])
+	},[uid])
   return(
     <div className='row'>
 	{

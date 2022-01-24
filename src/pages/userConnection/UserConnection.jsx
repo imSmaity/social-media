@@ -7,6 +7,8 @@ import './userConn.css'
 function UserConnection() {
     const [loading,setLoading]=useState(false)
     const [users,setUsers]=useState(null)
+    const [following,setFollowing]=useState(null)
+    const [followers,setFollowers]=useState(null)
     const CURRENT_PATH=(window.location.pathname).split('/')
     const USER=useParams()
 
@@ -14,9 +16,20 @@ function UserConnection() {
         axios.get(`${process.env.REACT_APP_USER_SIGNUP}/users`)
         .then((res)=>{
             setUsers(res.data)
+            const userData=JSON.parse(localStorage.getItem('_syt2022_'))
+            for(let i=0;i<res.data.length;i++){
+                if(res.data[i]._id==USER.uid){
+                    setFollowers(res.data[i].followers)
+                    setFollowing(res.data[i].following)   //Current routing users data get
+                }
+                if(res.data[i]._id===userData.uid){
+                    userData.followers=res.data[i].followers
+                    localStorage['_syt2022_']=JSON.stringify(userData)
+                }
+            }
             setLoading(true)
         })
-    },[])
+    },[CURRENT_PATH[2]])
 
   return (
     <div  className='row'>
@@ -32,8 +45,8 @@ function UserConnection() {
                 </Link>
             {
                 CURRENT_PATH[2]==='followers'?
-                <Followers loading={loading} users={users}/>:
-                <Following loading={loading} users={users}/>
+                <Followers loading={loading} users={users} followers={followers}/>:
+                <Following loading={loading} users={users} following={following} />
             }  
             </div>
             

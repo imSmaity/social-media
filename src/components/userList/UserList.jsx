@@ -1,15 +1,28 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Search, YouFollowing } from '../components';
+import { Search } from '../components';
 import axios from 'axios'
 import UserStatus from './UserStatus';
 import { Link } from 'react-router-dom';
 
+
+export function YouFollowing(user,following){
+    let status=false
+
+    for(let i=0;i<following.length;i++){
+        if(following[i]===user._id){
+            status=true
+            i=following.length
+        }
+    }
+
+    return status
+}
 function UserList() {
     const [loading,setLoading]=useState(false)
     const [users,setUsers]=useState(null)
-    const UID=JSON.parse(localStorage.getItem('_syt2022_')).uid
+    const userData=JSON.parse(localStorage.getItem('_syt2022_'))
 
     useEffect(()=>{
         axios.get(`${process.env.REACT_APP_USER_SIGNUP}/users`)
@@ -28,7 +41,7 @@ function UserList() {
             {
                 loading?
                 users.map((user,index)=>{
-                    if(!YouFollowing(user) && UID!==user._id){
+                    if(!YouFollowing(user,userData.following) && userData.uid!==user._id){
                         return(
                             <div className='row mt-3' key={index}>
                                 <div className='col-2'>

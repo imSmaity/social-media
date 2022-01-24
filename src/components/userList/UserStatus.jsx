@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 export default function UserStatus({user}) {
     const [youFollowed,setYouFollowed]=useState(false)
     const [loadList,setLoadList]=useState(1)
-
+    const UID=JSON.parse(localStorage.getItem('_syt2022_')).uid
     useEffect(()=>{
         setYouFollowed(false)
         const userData=JSON.parse(localStorage.getItem('_syt2022_'))
@@ -38,9 +38,11 @@ export default function UserStatus({user}) {
     return (
         <>
             {
+                UID!==user._id?
                 youFollowed?
                 <button type='button' onClick={()=>unfollow(user)}>Following</button>:
-                <button type='button' onClick={()=>following(user)}>Follow</button>
+                <button type='button' onClick={()=>following(user)}>Follow</button>:
+                <div></div>
 
             }
         </>

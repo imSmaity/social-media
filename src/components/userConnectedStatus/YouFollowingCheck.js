@@ -1,13 +1,18 @@
+import axios from "axios"
 
-export function YouFollowing(user){
+export function YouFollowing(user,uid){
     let status=false
 
-    const userData=JSON.parse(localStorage.getItem('_syt2022_'))
-    for(let i=0;i<userData.following.length;i++){
-        if(userData.following[i]===user._id){
-            status=true
-            i=userData.following.length
+    axios.post(`${process.env.REACT_APP_USER_SIGNUP}/search_user`,{uid:uid})
+    .then((res)=>{
+        if(res.data!==''){
+            for(let i=0;i<res.data.following.length;i++){
+                if(res.data.following[i]===user._id){
+                    status=true
+                    i=res.data.following.length
+                }
+            }
         }
-    }
+    })
     return status
 }
