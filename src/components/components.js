@@ -11,6 +11,8 @@ import Following from "./following/Following";
 import { YouFollowing } from "./userConnectedStatus/YouFollowingCheck";
 import Loading from "./loading/Loading";
 import PostLayout from "./postLayout/PostLayout";
+import CommentModel from "./comment/CommentModel";
+import LikeModel from "./like/LikeModel";
 
 
 export {Header, 
@@ -24,5 +26,7 @@ export {Header,
     Followers, 
     Following,
     Loading,
-    PostLayout
+    PostLayout,
+    CommentModel,
+    LikeModel
 }
