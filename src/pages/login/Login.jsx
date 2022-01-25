@@ -42,7 +42,7 @@ function Login() {
             <div className="col-md-4 col-1"></div>
             <center className="col-md-4 col-10">
                 <h3 className='mt-5'>Login</h3>
-                <input type={'text'} name='uid' className='mt-3' placeholder='Username' onChange={inputHandle}/>
+                <input type={'text'} name='uid' className='mt-3' placeholder='Username' onChange={inputHandle}/><br/>
                 <input type={'password'} name='password' className='mt-3' placeholder='Password'  onChange={inputHandle}/>
                 <div className='mt-4'>
                     <button type='button' onClick={login}>Login</button>

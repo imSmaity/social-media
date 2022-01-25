@@ -9,6 +9,20 @@ import { YourFollowers } from "./userConnectedStatus/YourFollowersCheck";
 import Followers from "./followers/Followers";
 import Following from "./following/Following";
 import { YouFollowing } from "./userConnectedStatus/YouFollowingCheck";
+import Loading from "./loading/Loading";
+import PostLayout from "./postLayout/PostLayout";
 
 
-export {Header, Navbar, Input, Search,  PostWrite, UserList, UserStatus, YourFollowers,YouFollowing, Followers, Following}
+export {Header, 
+    Navbar, 
+    Input, 
+    Search, 
+    PostWrite, 
+    UserList, 
+    UserStatus, 
+    YourFollowers,YouFollowing, 
+    Followers, 
+    Following,
+    Loading,
+    PostLayout
+}

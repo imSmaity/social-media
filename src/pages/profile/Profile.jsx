@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Navbar, UserList } from '../../components/components';
+import { Navbar, PostLayout, UserList } from '../../components/components';
 import './profile.css'
 
 function Profile() {
@@ -42,6 +42,7 @@ function Profile() {
 						<span><Link to={`/${userData._id}/followers`}>{`${userData.followers.length} Followers`}</Link></span>
 					</div>
 				</div>
+				<PostLayout posts={userData.postsData} postLoading={loading}/>
 			</div>
 			<div className='col-3'>
 				<UserList/>

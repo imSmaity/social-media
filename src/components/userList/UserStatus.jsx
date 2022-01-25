@@ -1,9 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Loading } from '../components';
 
 export default function UserStatus({user}) {
     const [youFollowed,setYouFollowed]=useState(false)
     const [loadList,setLoadList]=useState(1)
+    const [followLoad,setFollowLoad]=useState(false)
+    const [unfollowLoad,setUnfollowLoad]=useState(false)
+
     const UID=JSON.parse(localStorage.getItem('_syt2022_')).uid
     useEffect(()=>{
         setYouFollowed(false)
@@ -14,6 +18,8 @@ export default function UserStatus({user}) {
                 i=userData.following.length
             }
         }
+        setFollowLoad(false)
+        setUnfollowLoad(false)
     },[user,loadList])
 
     function following(user){
@@ -40,8 +46,16 @@ export default function UserStatus({user}) {
             {
                 UID!==user._id?
                 youFollowed?
-                <button type='button' onClick={()=>unfollow(user)}>Following</button>:
-                <button type='button' onClick={()=>following(user)}>Follow</button>:
+                <button type='button' 
+                    onClick={()=>{
+                        setUnfollowLoad(true)
+                        unfollow(user)
+                }}>{unfollowLoad?<Loading/>:'Following'}</button>:
+                <button type='button' 
+                    onClick={()=>{
+                        setFollowLoad(true)
+                        following(user) 
+                    }}>{followLoad?<Loading/>:'Follow'}</button>:
                 <div></div>
 
             }
