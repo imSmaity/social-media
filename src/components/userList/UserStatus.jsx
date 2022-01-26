@@ -46,12 +46,16 @@ export default function UserStatus({user}) {
             {
                 UID!==user._id?
                 youFollowed?
-                <button type='button' 
+                <button 
+                    type='button' 
+                    style={{height:'6vh'}}
                     onClick={()=>{
                         setUnfollowLoad(true)
                         unfollow(user)
                 }}>{unfollowLoad?<Loading/>:'Following'}</button>:
-                <button type='button' 
+                <button 
+                    type='button' 
+                    style={{height:'6vh'}}
                     onClick={()=>{
                         setFollowLoad(true)
                         following(user) 

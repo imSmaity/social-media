@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Search } from '../components';
 import axios from 'axios'
 import UserStatus from './UserStatus';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 
 export function YouFollowing(user,following){
@@ -23,6 +23,7 @@ function UserList() {
     const [loading,setLoading]=useState(false)
     const [users,setUsers]=useState(null)
     const userData=JSON.parse(localStorage.getItem('_syt2022_'))
+    const paramsUid=useParams().uid
 
     useEffect(()=>{
         axios.get(`${process.env.REACT_APP_USER_SIGNUP}/users`)
@@ -41,7 +42,7 @@ function UserList() {
             {
                 loading?
                 users.map((user,index)=>{
-                    if(!YouFollowing(user,userData.following) && userData.uid!==user._id){
+                    if(!YouFollowing(user,userData.following) && userData.uid!==user._id && paramsUid!==user._id){
                         return(
                             <div className='row mt-3' key={index}>
                                 <div className='col-2'>
