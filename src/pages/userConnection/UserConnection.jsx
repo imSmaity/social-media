@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { Followers, Following, Navbar, UserList } from '../../components/components';
 import './userConn.css'
@@ -11,6 +12,7 @@ function UserConnection() {
     const [followers,setFollowers]=useState(null)
     const CURRENT_PATH=(window.location.pathname).split('/')
     const USER=useParams()
+    const state=useSelector((state)=>state.updateRefresh)
 
     useEffect(()=>{
         axios.get(`${process.env.REACT_APP_USER_SIGNUP}/users`)
@@ -29,7 +31,7 @@ function UserConnection() {
             }
             setLoading(true)
         })
-    },[CURRENT_PATH[2]])
+    },[CURRENT_PATH[2],state])
 
   return (
     <div  className='row'>

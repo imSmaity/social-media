@@ -11,3 +11,9 @@ export const logout=()=>{
     }
 }
 
+export const upload=()=>{
+    return {
+        type:'post',
+        update: Math.random()
+    }
+}

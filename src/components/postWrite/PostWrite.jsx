@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import './postWrite.css'
 import {Loading} from '../components'
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { upload } from '../../redux/actions';
 
 function Write({postInputHandle,post}){
     return(
@@ -25,6 +27,8 @@ function Write({postInputHandle,post}){
 function PostWrite() {
     const [post,setPost]=useState("")
     const [postLoading,setPostLoading]=useState(false)
+    const dispatch=useDispatch()
+
     const avatar=JSON.parse(localStorage.getItem('_syt2022_')).avatar
     const userData=JSON.parse(localStorage.getItem('_syt2022_'))
 
@@ -42,6 +46,7 @@ function PostWrite() {
         .then(()=>{
             setPost("")
             setPostLoading(false)
+            dispatch(upload())
         })
     }
 

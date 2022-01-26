@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { upload } from '../../redux/actions';
 import { Loading } from '../components';
 
 export default function UserStatus({user}) {
@@ -7,6 +9,7 @@ export default function UserStatus({user}) {
     const [loadList,setLoadList]=useState(1)
     const [followLoad,setFollowLoad]=useState(false)
     const [unfollowLoad,setUnfollowLoad]=useState(false)
+    const dispatch=useDispatch()
 
     const UID=JSON.parse(localStorage.getItem('_syt2022_')).uid
     useEffect(()=>{
@@ -29,6 +32,7 @@ export default function UserStatus({user}) {
         .then(()=>{
             localStorage['_syt2022_']=JSON.stringify(userData)
             setLoadList(loadList+1)
+            dispatch(upload())
         })
     }
     function unfollow(user){
@@ -38,6 +42,7 @@ export default function UserStatus({user}) {
         .then(()=>{
             localStorage['_syt2022_']=JSON.stringify(userData)
             setLoadList(loadList+1)
+            dispatch(upload())
         })
     }
     

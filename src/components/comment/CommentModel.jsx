@@ -1,9 +1,12 @@
 import axios from "axios"
 import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { upload } from "../../redux/actions"
 
 
 function CommentModel({post}){
     const [currentComment,setCurrentComment]=useState('')
+    const dispatch=useDispatch()
     
     function commentHandle(e){
         setCurrentComment(e.target.value)
@@ -19,8 +22,9 @@ function CommentModel({post}){
                 commentUserUId: userData.uid,
                 commentUserAvatar: userData.avatar
             })
-            .then((res)=>{
+            .then(()=>{
                 setCurrentComment('')
+                dispatch(upload())
             })
         }
     }

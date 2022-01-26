@@ -2,8 +2,10 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { Navbar, PostLayout, UserList, UserStatus } from '../../components/components';
+import { upload } from '../../redux/actions';
 import EditProfile from './EditProfile';
 import './profile.css'
 
@@ -11,8 +13,9 @@ function Profile() {
 	const [userData,setUserData]=useState(null)
 	const [updateData,setUpdateData]=useState({fname:'',lname:'',bio:'',dob:''})
 	const [loading,setLoading]=useState(false)
-	const [update,setUpdate]=useState(0)
-	
+	const dispatch=useDispatch()
+	const state=useSelector((state)=>state.updateRefresh)
+
 	const uid=useParams().uid
 	const localUId=JSON.parse(localStorage.getItem('_syt2022_')).uid
 	
@@ -23,7 +26,7 @@ function Profile() {
 		setUpdateData({fname:res.data.fname,lname:res.data.lname,bio:res.data.bio,dob:res.data.dob})
 		setLoading(true)
 		})
-	},[uid,update])
+	},[uid,state])
 
 	function handleInput(e){
 		setUpdateData({...updateData,[e.target.name]:e.target.value})
@@ -32,7 +35,7 @@ function Profile() {
 		
 		axios.post(`${process.env.REACT_APP_USER_SIGNUP}/user_update`,{uid:localUId,data:updateData})
 		.then(()=>{
-			setUpdate(Math.random())
+			dispatch(upload())
 		})
 
 	}

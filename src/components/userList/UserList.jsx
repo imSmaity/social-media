@@ -5,6 +5,7 @@ import { Search } from '../components';
 import axios from 'axios'
 import UserStatus from './UserStatus';
 import { Link, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 export function YouFollowing(user,following){
@@ -24,6 +25,7 @@ function UserList() {
     const [users,setUsers]=useState(null)
     const userData=JSON.parse(localStorage.getItem('_syt2022_'))
     const paramsUid=useParams().uid
+    const state=useSelector((state)=>state.updateRefresh)
 
     useEffect(()=>{
         axios.get(`${process.env.REACT_APP_USER_SIGNUP}/users`)
@@ -31,7 +33,7 @@ function UserList() {
             setUsers(res.data.reverse())
             setLoading(true)
         })
-    },[])
+    },[state])
 
     
     return (
@@ -57,6 +59,9 @@ function UserList() {
                                 </div>
                             </div>
                         )
+                    }
+                    else{
+                        return <div key={index}></div>
                     }
                 }):
                 <div>Loading...</div>

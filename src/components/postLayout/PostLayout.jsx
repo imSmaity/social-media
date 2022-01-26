@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { upload } from '../../redux/actions';
 import { CommentModel, LikeModel, Loading } from '../components';
 
 function userLikeState(post){
@@ -17,9 +18,11 @@ function userLikeState(post){
 
 
 function PostLayout({posts,postLoading}) {
-    
+    const dispatch=useDispatch()
+
     function like(post){
         const userData=JSON.parse(localStorage.getItem('_syt2022_'))
+
         axios.post(`${process.env.REACT_APP_USER_SIGNUP}/like_update`,
         {
             postId:post._id,
@@ -27,8 +30,8 @@ function PostLayout({posts,postLoading}) {
             likesUserUId: userData.uid,
             likesUserAvatar: userData.avatar
         })
-        .then((res)=>{
-            console.log(res.data)
+        .then(()=>{
+            dispatch(upload())
         })
     }
     function unlike(post){
@@ -39,8 +42,8 @@ function PostLayout({posts,postLoading}) {
             likes: post.likes,
             likesUserUId: userData.uid,
         })
-        .then((res)=>{
-            console.log(res.data)
+        .then(()=>{
+            dispatch(upload())
         })
     }
     

@@ -2,11 +2,13 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import {PostLayout} from '../../components/components'
 
 function WhatsHappening() {
     const [posts,setPosts]=useState(null)
     const [postLoading,setPostLoading]=useState(false)
+    const state=useSelector((state)=>state.updateRefresh)
 
     useEffect(()=>{
         const userData=JSON.parse(localStorage.getItem('_syt2022_'))
@@ -15,7 +17,8 @@ function WhatsHappening() {
             setPosts(res.data)
             setPostLoading(true)
         })
-    },[])
+    },[state])
+    
   return (
     <>
       <PostLayout posts={posts} postLoading={postLoading}/>
