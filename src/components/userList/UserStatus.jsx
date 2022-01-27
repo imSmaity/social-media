@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { upload } from '../../redux/actions';
 import { Loading } from '../components';
+import './user.css'
+
 
 export default function UserStatus({user}) {
     const [youFollowed,setYouFollowed]=useState(false)
@@ -52,6 +54,7 @@ export default function UserStatus({user}) {
                 UID!==user._id?
                 youFollowed?
                 <button 
+                id='fu'
                     type='button' 
                     style={{height:'6vh'}}
                     onClick={()=>{
@@ -59,6 +62,7 @@ export default function UserStatus({user}) {
                         unfollow(user)
                 }}>{unfollowLoad?<Loading/>:'Following'}</button>:
                 <button 
+                    id='fu'
                     type='button' 
                     style={{height:'6vh'}}
                     onClick={()=>{

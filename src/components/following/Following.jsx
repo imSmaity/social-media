@@ -21,6 +21,7 @@ function Following({loading,users,following}) {
                                     <div className="col-6">
                                         <Link to={`/${user._id}`}>{`${user.fname} ${user.lname}`}</Link>
                                         <div>{user._id}</div>
+                                        <div>{user.bio}</div>
                                     </div>
                                     <div className="col-4">
                                         <UserStatus user={user}/>

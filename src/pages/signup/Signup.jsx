@@ -62,7 +62,7 @@ function Signup() {
 		})
 	}
   return( 
-		<div className='row'>
+		<>
 			<center>
 				<h3 className='col-12 mt-3'>Sign Up</h3>
 				<div className='col-md-4 col-1'></div>
@@ -85,7 +85,7 @@ function Signup() {
 				</div>
 				<div className='col-md-4 col-1'></div>
 			</center>
-		</div>
+		</>
   	);
 }
 

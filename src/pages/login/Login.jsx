@@ -38,7 +38,7 @@ function Login() {
         })
     }
   return (
-        <div className='row'>
+        <>
             <div className="col-md-4 col-1"></div>
             <center className="col-md-4 col-10">
                 <h3 className='mt-5'>Login</h3>
@@ -49,7 +49,7 @@ function Login() {
                 </div>
             </center>
             <div className="col-md-4 col-1"></div>
-        </div>
+        </>
     )
 }
 

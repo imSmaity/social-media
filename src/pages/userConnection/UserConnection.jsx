@@ -34,8 +34,7 @@ function UserConnection() {
     },[CURRENT_PATH[2],state])
 
   return (
-    <div  className='row'>
-        <div className='col-3'><Navbar/></div>
+    <>
         <div className='col-6 mt-1'>
             <div className='row'>
             
@@ -53,8 +52,7 @@ function UserConnection() {
             </div>
             
         </div>
-        <div className='col-3'><UserList/></div>
-    </div>
+    </>
     )
 }
 

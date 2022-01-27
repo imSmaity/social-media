@@ -1,0 +1,22 @@
+.pbtnD button{
+    border-radius: 1vh;
+}
+.pbtnD{
+    border-bottom: 1px solid rgba(192, 190, 190, 0.527);
+    padding: 5px;
+}
+.pps img{
+    width: 8vh;
+    height: 8vh;
+    border-radius: 50%;
+    background-color: rgba(219, 223, 223, 0.582);
+    padding: 3px;
+}
+.sp{
+    text-decoration: none;
+    color: black;
+}
+.sp span{
+    margin-left: .6vh;
+    color: gray;
+}

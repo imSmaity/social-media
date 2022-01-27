@@ -31,7 +31,7 @@ function CommentModel({post}){
 
     return(
         <>
-            <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1">
+            <div className="modal fade" id={`exampleModalToggle${post._id}`} aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1">
                 <div className="modal-dialog modal-dialog-scrollable ">
                     <div className="modal-content">
                     <div className="modal-header">
@@ -42,15 +42,15 @@ function CommentModel({post}){
                             post.comments.map((val,index)=>{
                                 return(
                                     <div className="row" key={index}>
-                                        <div className="col-2">
+                                        <div className="col-2 pps">
                                             <img src={val.commentUserAvatar} alt="pp"/>
                                         </div>
                                         <div className='col-10 mt-2'>
-                                            <div>
+                                            <div className="sp" style={{textAlign:'left'}}>
                                                 {val.commentUserName}
                                                 <span>{`@${val.commentUserUId}`}</span>
                                             </div>
-                                            <div>{val.comment}</div>
+                                            <div style={{textAlign:'left'}}>{val.comment}</div>
                                         </div>
                                     </div>
                                 )

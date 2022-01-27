@@ -1,8 +1,11 @@
 import axios from 'axios';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { upload } from '../../redux/actions';
 import { CommentModel, LikeModel, Loading } from '../components';
+import './postLayout.css'
+
 
 function userLikeState(post){
     let like=false
@@ -53,29 +56,29 @@ function PostLayout({posts,postLoading}) {
                 postLoading?
                 posts.map((post,index)=>{
                 return(
-                    <div className='row mt-3' key={index}>
-                    <div className='col-2'>
+                    <div className='row mt-3 pbtnD' key={index}>
+                    <Link to={`/${post.uploderUId}`} className='col-2 pps'>
                         <img src={post.uploderAvatar} alt='pp'/>
-                    </div>
+                    </Link>
                     <div className='col-10 mt-2'>
-                        <div>
-                        {post.uploderName}
-                        <span>{`@${post.uploderUId}`}</span>
-                        </div>
+                        <Link to={`/${post.uploderUId}`} className='sp'>
+                            {post.uploderName}
+                            <span>{`@${post.uploderUId}`}</span>
+                        </Link>
                         <div>{post.post}</div>
                     </div>
                     <div className='col-12 mt-3'>
                         <center className='row'>
                             <div className='col-6'>
-                                <LikeModel likes={post.likes}/>
+                                <LikeModel post={post}/>
                                 
-                                <u data-bs-toggle="modal" href="#exampleModalToggleLike" style={{marginRight:'2vh',color:'deepskyblue'}} role="button">{post.likes.length}</u>
+                                <u data-bs-toggle="modal" href={`#exampleModalToggleLike${post._id}`} style={{marginRight:'2vh',color:'deepskyblue'}} role="button">{post.likes.length}</u>
                                 {
                                     userLikeState(post)?
-                                    <button type='button' className="btn btn-dark" onClick={()=>unlike(post)}>
+                                    <button type='button'  onClick={()=>unlike(post)}>
                                         Unlike
                                     </button>:
-                                    <button type='button' className="btn btn-dark" onClick={()=>like(post)}>
+                                    <button type='button'  onClick={()=>like(post)}>
                                         Like
                                     </button>
                                 }
@@ -83,7 +86,7 @@ function PostLayout({posts,postLoading}) {
                             </div>
                             <div className='col-6'>
                                 <CommentModel post={post}  />
-                                <button type='button' className="btn btn-dark" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Comment</button>
+                                <button type='button'  data-bs-toggle="modal" href={`#exampleModalToggle${post._id}`} role="button">Comment</button>
                             </div>
                         </center>
                     </div>

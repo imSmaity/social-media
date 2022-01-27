@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { Navbar, PostLayout, UserList, UserStatus } from '../../components/components';
+import { Loading, Navbar, PostLayout, UserList, UserStatus } from '../../components/components';
 import { upload } from '../../redux/actions';
 import EditProfile from './EditProfile';
 import './profile.css'
@@ -40,14 +40,11 @@ function Profile() {
 
 	}
   return(
-    <div className='row'>
+    <>
 	{
 		loading?
 		<>
-			<div className='col-3 '>
-				<img id='icon' src={require('../../Assets/images/dove.png')} alt="Logo" />
-				<Navbar/>
-			</div>
+			
 			<div className='col-md-6 col-12 bsh'>
 				<div className='row bb'>
 			
@@ -76,23 +73,22 @@ function Profile() {
 						
 					</div>
 					<div className='col-12'>{`${userData.fname} ${userData.lname}`}</div>
-					<div className='col-12'>{`${uid}`}</div>
+					<div className='col-12' style={{marginTop:'-1vh',color:'gray',fontSize:'2.5vh'}}>{`@${uid}`}</div>
 					<div className='col-12'>{userData.bio}</div>
-					<div className='col-12'>
-						<Link to={`/${userData._id}/following`}>{`${userData.following.length} Following`}</Link>
-						<span><Link to={`/${userData._id}/followers`}>{`${userData.followers.length} Followers`}</Link></span>
+					<div className='col-12' >
+						<Link to={`/${userData._id}/following`} style={{textDecoration:'none',color:'black'}}>{`${userData.following.length} Following`}</Link>
+						<span style={{marginLeft:'6px'}}>
+							<Link to={`/${userData._id}/followers`} style={{textDecoration:'none',color:'black'}}>{`${userData.followers.length} Followers`}</Link>
+						</span>
 					</div>
 				</div>
 				<PostLayout posts={userData.postsData} postLoading={loading}/>
 			</div>
-			<div className='col-3'>
-				<UserList/>
-			</div>
 		</>:
-		<div>Loading...</div>
+		<div className='col-6'><Loading/></div>
 	}
       
-	</div>
+	</>
   ) ;
 }
 

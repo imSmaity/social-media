@@ -50,9 +50,9 @@ function UserList() {
                                 <div className='col-2'>
                                     <Link to={`/${user._id}`}> <img src={user.avatar} alt='pp' id='havatar'/></Link>
                                 </div>
-                                <div className="col-6">
-                                    <Link to={`/${user._id}`}>{`${user.fname} ${user.lname}`}</Link>
-                                    <div>{user._id}</div>
+                                <div className="col-6" >
+                                    <Link to={`/${user._id}`} style={{textDecoration:'none',color:'black'}}>{`${user.fname} ${user.lname}`}</Link>
+                                    <div style={{marginTop:'-1vh',color:'gray',fontSize:'2.5vh'}}>@{user._id}</div>
                                 </div>
                                 <div className="col-4">
                                     <UserStatus user={user}/>
