@@ -23,6 +23,7 @@ function userLikeState(post){
 function PostLayout({posts,postLoading}) {
     const dispatch=useDispatch()
     const [loading,setLoadign]=useState(false)
+    const [loadingLike,setLoadingLike]=useState('')
     const userData=JSON.parse(localStorage.getItem('_syt2022_'))
 
     function like(post){
@@ -36,6 +37,7 @@ function PostLayout({posts,postLoading}) {
             likesUserAvatar: userData.avatar
         })
         .then(()=>{
+            setLoadingLike('')
             dispatch(upload())
         })
     }
@@ -48,6 +50,7 @@ function PostLayout({posts,postLoading}) {
             likesUserUId: userData.uid,
         })
         .then(()=>{
+            setLoadingLike('')
             dispatch(upload())
         })
     }
@@ -105,13 +108,27 @@ function PostLayout({posts,postLoading}) {
                                 
                                 <u data-bs-toggle="modal" href={`#exampleModalToggleLike${post._id}`} style={{marginRight:'2vh',color:'deepskyblue'}} role="button">{post.likes.length}</u>
                                 {
+                                    loadingLike!==post._id?
                                     userLikeState(post)?
-                                    <button type='button'  onClick={()=>unlike(post)}>
+                                    <button 
+                                        type='button'  
+                                        onClick={()=>{
+                                            setLoadingLike(post._id)
+                                            unlike(post)
+                                        }
+                                    }>
                                         Unlike
                                     </button>:
-                                    <button type='button'  onClick={()=>like(post)}>
+                                    <button 
+                                        type='button'  
+                                        onClick={()=>{
+                                            setLoadingLike(post._id)
+                                            like(post)
+                                        }
+                                    }>
                                         Like
-                                    </button>
+                                    </button>:
+                                    <button><Loading/></button>
                                 }
                                 
                             </div>
