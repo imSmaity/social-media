@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { upload } from '../../redux/actions';
@@ -22,6 +22,8 @@ function userLikeState(post){
 
 function PostLayout({posts,postLoading}) {
     const dispatch=useDispatch()
+    const [loading,setLoadign]=useState(false)
+    const userData=JSON.parse(localStorage.getItem('_syt2022_'))
 
     function like(post){
         const userData=JSON.parse(localStorage.getItem('_syt2022_'))
@@ -49,7 +51,15 @@ function PostLayout({posts,postLoading}) {
             dispatch(upload())
         })
     }
-    
+    function deletePost(postId){
+
+        axios.post(`${process.env.REACT_APP_USER_SIGNUP}/delete_post`,{postId,uid:userData.uid})
+        .then(()=>{
+            dispatch(upload())
+            setLoadign(false)
+        })
+        
+    }
     return (
         <>
             {
@@ -60,12 +70,33 @@ function PostLayout({posts,postLoading}) {
                     <Link to={`/${post.uploderUId}`} className='col-2 pps'>
                         <img src={post.uploderAvatar} alt='pp'/>
                     </Link>
-                    <div className='col-10 mt-2'>
+                    <div className='col-8 mt-2'>
                         <Link to={`/${post.uploderUId}`} className='sp'>
                             {post.uploderName}
                             <span>{`@${post.uploderUId}`}</span>
                         </Link>
                         <div>{post.post}</div>
+                    </div>
+                    <div className="col-2 dropdown" style={{display:userData.uid===post.uploderUId?'inline':'none'}}>
+                        <button type='button' className=" dotIcon">...</button>
+                        {
+                            !loading?
+                       
+                            <div className="dropdown-content" 
+                                onClick={()=>{
+                                    setLoadign(true)
+                                    deletePost(post._id)
+                                }
+                            }>
+                                <div className='link'>Delete post</div>
+                            </div>:
+                            
+                            <div className="dropdown-content" >
+                                <div className='link'><Loading/></div>
+                            </div>
+                           
+                        } 
+                        
                     </div>
                     <div className='col-12 mt-3'>
                         <center className='row'>
@@ -86,7 +117,7 @@ function PostLayout({posts,postLoading}) {
                             </div>
                             <div className='col-6'>
                                 <CommentModel post={post}  />
-                                <button type='button'  data-bs-toggle="modal" href={`#exampleModalToggle${post._id}`} role="button">Comment</button>
+                                <button type='button'  data-bs-toggle="modal" href={`#exampleModalToggle${post._id}`}>Comment</button>
                             </div>
                         </center>
                     </div>

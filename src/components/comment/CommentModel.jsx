@@ -2,12 +2,15 @@ import axios from "axios"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { upload } from "../../redux/actions"
+import { Loading } from "../components"
 
 
 function CommentModel({post}){
     const [currentComment,setCurrentComment]=useState('')
     const dispatch=useDispatch()
-    
+    const [loading,setLoadign]=useState(false)
+    const userData=JSON.parse(localStorage.getItem('_syt2022_'))
+
     function commentHandle(e){
         setCurrentComment(e.target.value)
     }
@@ -28,7 +31,14 @@ function CommentModel({post}){
             })
         }
     }
-
+    
+    function deleteComment(index){
+        axios.post(`${process.env.REACT_APP_USER_SIGNUP}/delete_comment`,{postId:post._id,index})
+        .then(()=>{
+            dispatch(upload())
+            setLoadign(false)
+        })
+    }
     return(
         <>
             <div className="modal fade" id={`exampleModalToggle${post._id}`} aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1">
@@ -45,12 +55,33 @@ function CommentModel({post}){
                                         <div className="col-2 pps">
                                             <img src={val.commentUserAvatar} alt="pp"/>
                                         </div>
-                                        <div className='col-10 mt-2'>
+                                        <div className='col-8 mt-2'>
                                             <div className="sp" style={{textAlign:'left'}}>
                                                 {val.commentUserName}
                                                 <span>{`@${val.commentUserUId}`}</span>
                                             </div>
                                             <div style={{textAlign:'left'}}>{val.comment}</div>
+                                        </div>
+                                        <div className="col-2 dropdown" style={{display:userData.uid===val.commentUserUId?'inline':'none'}}>
+                                            <button type='button' className=" dotIcon">...</button>
+                                            {
+                                                !loading?
+                                        
+                                                <div className="dropdown-content" 
+                                                    onClick={()=>{
+                                                        setLoadign(true)
+                                                        deleteComment(index)
+                                                    }
+                                                }>
+                                                    <div className='link'>Delete Comment</div>
+                                                </div>:
+                                                
+                                                <div className="dropdown-content" >
+                                                    <div className='link'><Loading/></div>
+                                                </div>
+                                            
+                                            } 
+                                            
                                         </div>
                                     </div>
                                 )
@@ -58,7 +89,7 @@ function CommentModel({post}){
                         }
                         <div className="input-group mb-3 mt-5">
                             <input type="text" value={currentComment}  className="form-control" id="exampleFormControlInput1" placeholder="Type your comment here..." onChange={commentHandle}/>
-                            <button type="button" onClick={()=>comment(post)}>Comment</button>
+                            <button type="button" disabled={currentComment===''?true:false} onClick={()=>comment(post)}>Comment</button>
                         </div>
                     </div>
                     <div className="modal-footer">

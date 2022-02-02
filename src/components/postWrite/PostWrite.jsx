@@ -63,6 +63,7 @@ function PostWrite() {
             <button 
                 type='button' 
                 className='float-end mb-3 post' 
+                disabled={post===''?true:false}
                 onClick={()=>{
                     setPostLoading(true)
                     postSubmit()
