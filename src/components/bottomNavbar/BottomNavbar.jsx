@@ -10,6 +10,7 @@ function BottomNavbar() {
 
     const UID=JSON.parse(localStorage.getItem('_syt2022_')).uid
     function logOut(){
+        
         localStorage.removeItem('_syt2022_')
         dispatch(logout())
         naviga('/login')
