@@ -5,10 +5,8 @@ import Search from "./search/Search";
 import PostWrite from "./postWrite/PostWrite";
 import UserList from "./userList/UserList";
 import UserStatus from "./userList/UserStatus";
-import { YourFollowers } from "./userConnectedStatus/YourFollowersCheck";
 import Followers from "./followers/Followers";
 import Following from "./following/Following";
-import { YouFollowing } from "./userConnectedStatus/YouFollowingCheck";
 import Loading from "./loading/Loading";
 import PostLayout from "./postLayout/PostLayout";
 import CommentModel from "./comment/CommentModel";
@@ -23,7 +21,6 @@ export {Header,
     PostWrite, 
     UserList, 
     UserStatus, 
-    YourFollowers,YouFollowing, 
     Followers, 
     Following,
     Loading,

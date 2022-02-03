@@ -1,8 +1,6 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { UserStatus, YourFollowers } from '../components';
+
+import { Link} from 'react-router-dom';
+import { UserStatus } from '../components';
 
 
 
@@ -34,6 +32,7 @@ function Followers({loading,users,followers}) {
                             )
                         }
                     }
+                    return <div key={index}></div>
                 }):
                 <div>Loading...</div>
             }
