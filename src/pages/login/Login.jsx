@@ -3,7 +3,7 @@ import { useState } from 'react';
 import axios from 'axios'
 import {useDispatch} from 'react-redux'
 import { loginUpdate } from '../../redux/actions';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Login() {
@@ -25,7 +25,7 @@ function Login() {
                         bio:res.data.bio,following:res.data.following,followers:res.data.followers}
                     ))
                     dispatch(loginUpdate())
-                    navigate(-1)
+                    navigate('/')
                 }
                 else{
                     alert("Wrong email or password. Try agein.")
@@ -43,7 +43,13 @@ function Login() {
             <center className="col-md-4 col-10">
                 <h3 className='mt-5'>Login</h3>
                 <input type={'text'} name='uid' className='mt-3' placeholder='Username' onChange={inputHandle}/><br/>
-                <input type={'password'} name='password' className='mt-3' placeholder='Password'  onChange={inputHandle}/>
+                <input type={'password'} name='password' className='mt-3' placeholder='Password'  onChange={inputHandle}/><br/>
+                <Link to={'/forgot_password'}>
+                    Forgot Password?
+                </Link>
+                <div className='col-12'>
+                    Don't have an account? <Link to={'/signup'}>Sign up</Link>
+                </div>
                 <div className='mt-4'>
                     <button type='button' onClick={login}>Login</button>
                 </div>

@@ -13,6 +13,7 @@ import Loading from "./loading/Loading";
 import PostLayout from "./postLayout/PostLayout";
 import CommentModel from "./comment/CommentModel";
 import LikeModel from "./like/LikeModel";
+import BottomNavbar from "./bottomNavbar/BottomNavbar";
 
 
 export {Header, 
@@ -28,5 +29,6 @@ export {Header,
     Loading,
     PostLayout,
     CommentModel,
-    LikeModel
+    LikeModel,
+    BottomNavbar
 }

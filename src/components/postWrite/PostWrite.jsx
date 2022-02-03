@@ -53,12 +53,12 @@ function PostWrite() {
 
   return (
     <div className='row bb mt-3'>
-        <div className='col-1'>
+        <div className='col-lg-2 col-2'>
             <Link to={`/${userData.uid}`}>
                 <img src={avatar} id='havatar' alt='PP'/>
             </Link>
         </div>
-        <div className='col-11'>
+        <div className='col-lg-10 col-9'>
             <Write postInputHandle={(e)=>postInputHandle(e)} post={post}/>
             <button 
                 type='button' 

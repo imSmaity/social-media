@@ -20,9 +20,9 @@ function WhatsHappening() {
     },[state])
     
   return (
-    <>
+    <div className='fs'>
       <PostLayout posts={posts} postLoading={postLoading}/>
-    </>
+    </div>
   );
 }
 

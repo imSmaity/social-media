@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { Followers, Following, Navbar, UserList } from '../../components/components';
+import { Followers, Following} from '../../components/components';
 import './userConn.css'
 
 function UserConnection() {
@@ -20,7 +20,7 @@ function UserConnection() {
             setUsers(res.data)
             const userData=JSON.parse(localStorage.getItem('_syt2022_'))
             for(let i=0;i<res.data.length;i++){
-                if(res.data[i]._id==USER.uid){
+                if(res.data[i]._id===USER.uid){
                     setFollowers(res.data[i].followers)
                     setFollowing(res.data[i].following)   //Current routing users data get
                 }
@@ -31,11 +31,11 @@ function UserConnection() {
             }
             setLoading(true)
         })
-    },[CURRENT_PATH[2],state])
+    },[CURRENT_PATH[2],state,USER.uid])
 
   return (
     <>
-        <div className='col-6 mt-1'>
+        <div className='col-lg-6 col-12 mt-1'>
             <div className='row'>
             
                 <Link to={`/${USER.uid}/followers`} className='col-6 fbtn'>

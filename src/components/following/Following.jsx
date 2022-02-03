@@ -31,6 +31,7 @@ function Following({loading,users,following}) {
                             )
                         }
                     }
+                    return <div key={index}></div>
                 }):
                 <div>Loading...</div>
                 }

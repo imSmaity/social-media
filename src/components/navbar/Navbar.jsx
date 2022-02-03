@@ -22,9 +22,6 @@ export default function Navbar() {
             <Link to={`/${UID}`} className="col-12 td mt-5">
                 <div className='linkl'>Profile</div>
             </Link>
-            <Link to={'/explore'} className="col-12 td mt-5">
-                <div className='linkl'>Explore</div>
-            </Link>
             <div className="col-12 td mt-5" onClick={logOut}>
                 <div className='linkl'>Logout</div>
             </div>

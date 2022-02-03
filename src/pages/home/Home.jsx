@@ -7,7 +7,7 @@ import WhatsHappening from './WhatsHappening'
 function Home() {
     return (
         <>
-            <div className='col-md-6 col-12 bsh'>
+            <div className='col-lg-6 col-12 bsh'>
                 <h4>Home</h4>
                 <PostWrite/>
                 <WhatsHappening/>

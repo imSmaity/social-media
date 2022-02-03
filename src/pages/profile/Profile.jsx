@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { Loading, Navbar, PostLayout, UserList, UserStatus } from '../../components/components';
+import { Loading, PostLayout, UserStatus } from '../../components/components';
 import { upload } from '../../redux/actions';
 import EditProfile from './EditProfile';
 import './profile.css'
@@ -64,7 +64,7 @@ function Profile() {
 									style={{height:'6vh',borderRadius:'3vh',color:'blue'}} 
 									data-bs-toggle="modal" 
 									href="#exampleModalToggleEditProfile" 
-									role="button">
+								>
 									Edit Profile
 								</button>
 							</>:
@@ -82,7 +82,9 @@ function Profile() {
 						</span>
 					</div>
 				</div>
-				<PostLayout posts={userData.postsData} postLoading={loading}/>
+				<div className='fs'>
+					<PostLayout posts={userData.postsData} postLoading={loading}/>
+				</div>
 			</div>
 		</>:
 		<div className='col-6'><Loading/></div>

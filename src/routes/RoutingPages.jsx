@@ -2,8 +2,9 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import {Route, Routes, useNavigate } from 'react-router-dom'
-import { Navbar, UserList } from '../components/components'
-import {Explore, Home, Login, Profile, Signup, UserConnection} from '../pages/pages'
+import { BottomNavbar, Navbar, UserList } from '../components/components'
+import {Explore, ForgotPassword, Home, Login, Profile, Signup, UserConnection} from '../pages/pages'
+import './style.css'
 
 function Redirect({to}){
     const navigate=useNavigate()
@@ -22,7 +23,7 @@ function RoutingPages() {
             {
                 isLoggedIn?
                 <div className='row'>
-                    <div className='col-3 '>
+                    <div className='col-lg-3 col-12 visible'>
                         <img id='icon' src={require('../Assets/images/dove.png')} alt="Logo" />
                         <Navbar/>
                     </div>
@@ -36,8 +37,11 @@ function RoutingPages() {
                         <Route path="/:uid/followers" element={isLoggedIn?<UserConnection/>:<Redirect to='/login' />} />
                         <Route path="/:uid/following" element={isLoggedIn?<UserConnection/>:<Redirect to='/login' />} />
                     </Routes>
-                    <div className='col-3'>
+                    <div className='col-lg-3 col-12 visible' >
                         <UserList/>
+                    </div>
+                    <div className='col-12 lg-visible fixed-bottom'>
+                        <BottomNavbar/>
                     </div>
                 </div>:
                 <center>
@@ -48,6 +52,7 @@ function RoutingPages() {
                             <Route path="/:uid" element={isLoggedIn?<Profile/>:<Redirect to='/login' />} />
                             <Route path="explore" element={isLoggedIn?<Explore/>:<Redirect to='/login' />}  />
                             <Route path={"signup"} element={<Signup/>}  />
+                            <Route path={"forgot_password"} element={<ForgotPassword/>}  />
                             <Route path="/:uid/followers" element={isLoggedIn?<UserConnection/>:<Redirect to='/login' />} />
                             <Route path="/:uid/following" element={isLoggedIn?<UserConnection/>:<Redirect to='/login' />} />
                     </Routes>

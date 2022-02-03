@@ -2,6 +2,7 @@ import React from 'react';
 import {Input} from '../../components/components'
 import axios from 'axios'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const inputAttribute=[
@@ -49,17 +50,29 @@ const inputAttribute=[
 
 function Signup() {
 	const [userData,setUserData]=useState({_id:'',fname:'',lname:'',gender:'',email:'',dob:'',password:'',rePassword:''})
+	const navigate=useNavigate()
 
 	function handleInput(e){
 		setUserData({...userData,[e.target.name]:e.target.value})
 	}
 	function signup(){
-		axios.post(`${process.env.REACT_APP_USER_SIGNUP}/signup`,{userData})
-		.then((res)=>{
-			if(res.data.success){
-				alert("Submited")
+
+		axios.post(`${process.env.REACT_APP_USER_SIGNUP}/search_user`,{uid:userData._id})
+		.then(res=>{ 
+			if(res.data===""){
+				axios.post(`${process.env.REACT_APP_USER_SIGNUP}/signup`,{userData})
+				.then(()=>{
+					navigate('/login')
+				})
+			}
+			else{
+				alert(userData._id+" already used, try another username")
 			}
 		})
+        
+
+		
+		
 	}
   return( 
 		<>
@@ -75,6 +88,7 @@ function Signup() {
 									name={val.name}
 									placeholder={val.placeholder}
 									onChange={(e)=>handleInput(e)}
+									style={{width:'32vh'}}
 								/>
 							</div>
 						)
