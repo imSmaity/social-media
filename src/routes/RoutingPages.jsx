@@ -41,7 +41,7 @@ function RoutingPages() {
                     <div className='col-lg-3 col-12 visible' >
                         <UserList/>
                     </div>
-                    <div className='col-12 lg-visible fixed-bottom' style={{marginBottom:'2vh'}}>
+                    <div className='col-12 lg-visible fixed-bottom'>
                         <BottomNavbar/>
                     </div>
                 </div>:
