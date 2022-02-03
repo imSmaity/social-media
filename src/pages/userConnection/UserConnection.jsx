@@ -11,6 +11,7 @@ function UserConnection() {
     const [following,setFollowing]=useState(null)
     const [followers,setFollowers]=useState(null)
     const CURRENT_PATH=(window.location.pathname).split('/')
+    const path=CURRENT_PATH[2]
     const USER=useParams()
     const state=useSelector((state)=>state.updateRefresh)
 
@@ -31,7 +32,7 @@ function UserConnection() {
             }
             setLoading(true)
         })
-    },[CURRENT_PATH[2],state,USER.uid])
+    },[path,state,USER.uid])
 
   return (
     <>

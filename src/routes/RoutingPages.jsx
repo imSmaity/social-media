@@ -36,6 +36,7 @@ function RoutingPages() {
                         <Route path={"signup"} element={<Signup/>}  />
                         <Route path="/:uid/followers" element={isLoggedIn?<UserConnection/>:<Redirect to='/login' />} />
                         <Route path="/:uid/following" element={isLoggedIn?<UserConnection/>:<Redirect to='/login' />} />
+                        <Route path={"*"} element={<h1>Page not found!</h1>}  />
                     </Routes>
                     <div className='col-lg-3 col-12 visible' >
                         <UserList/>
@@ -55,6 +56,7 @@ function RoutingPages() {
                             <Route path={"forgot_password"} element={<ForgotPassword/>}  />
                             <Route path="/:uid/followers" element={isLoggedIn?<UserConnection/>:<Redirect to='/login' />} />
                             <Route path="/:uid/following" element={isLoggedIn?<UserConnection/>:<Redirect to='/login' />} />
+                            <Route path={"*"} element={<h1>Page not found!</h1>}  />
                     </Routes>
                 </center>
             }
