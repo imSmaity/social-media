@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import {Loading} from '../../components/components'
 
 function Login() {
-    const [loginData,setLoginData]=useState({uid:'',password:''})
+    const [loginData,setLoginData]=useState({uid:'admin',password:'admin'})
     const [load,setLoad]=useState(false)
     const dispatch= useDispatch()
     const navigate=useNavigate()
