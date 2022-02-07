@@ -37,8 +37,10 @@ function PostLayout({posts,postLoading}) {
             likesUserAvatar: userData.avatar
         })
         .then(()=>{
-            setLoadingLike('')
             dispatch(upload())
+            setTimeout(()=>{
+                setLoadingLike('')
+            },2000)
         })
     }
     function unlike(post){
@@ -50,8 +52,11 @@ function PostLayout({posts,postLoading}) {
             likesUserUId: userData.uid,
         })
         .then(()=>{
-            setLoadingLike('')
+            
             dispatch(upload())
+            setTimeout(()=>{
+                setLoadingLike('')
+            },2000)
         })
     }
     function deletePost(postId){

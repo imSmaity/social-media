@@ -4,10 +4,11 @@ import axios from 'axios'
 import {useDispatch} from 'react-redux'
 import { loginUpdate } from '../../redux/actions';
 import { Link, useNavigate } from 'react-router-dom';
-
+import {Loading} from '../../components/components'
 
 function Login() {
     const [loginData,setLoginData]=useState({uid:'',password:''})
+    const [load,setLoad]=useState(false)
     const dispatch= useDispatch()
     const navigate=useNavigate()
 
@@ -25,15 +26,18 @@ function Login() {
                         bio:res.data.bio,following:res.data.following,followers:res.data.followers}
                     ))
                     dispatch(loginUpdate())
+                    setLoad(false)
                     navigate('/')
                 }
                 else{
-                    alert("Wrong email or password. Try agein.")
+                    setLoad(false)
+                    alert("Wrong username or password. Try agein.")
                 }
                 
             }
             else{
-                alert("Wrong email or password. Try agein.")
+                setLoad(false)
+                alert("Wrong username or password. Try agein.")
             }
         })
     }
@@ -42,8 +46,8 @@ function Login() {
             <div className="col-md-4 col-1"></div>
             <center className="col-md-4 col-10">
                 <h3 className='mt-5'>Login</h3>
-                <input type={'text'} name='uid' className='mt-3' placeholder='Username' onChange={inputHandle}/><br/>
-                <input type={'password'} name='password' className='mt-3' placeholder='Password'  onChange={inputHandle}/><br/>
+                <input type={'text'} name='uid' value={loginData.uid} className='mt-3' placeholder='Username' onChange={inputHandle}/><br/>
+                <input type={'password'} name='password' value={loginData.password} className='mt-3' placeholder='Password'  onChange={inputHandle}/><br/>
                 <Link to={'/forgot_password'}>
                     Forgot Password?
                 </Link>
@@ -51,7 +55,15 @@ function Login() {
                     Don't have an account? <Link to={'/signup'}>Sign up</Link>
                 </div>
                 <div className='mt-4'>
-                    <button type='button' onClick={login}>Login</button>
+                {
+                    !load?
+                    <button type='button' onClick={()=>{
+                        setLoad(true)
+                        login()
+                    }}>Login</button>:
+                    <button><Loading/></button>
+                }
+                    
                 </div>
             </center>
             <div className="col-md-4 col-1"></div>
