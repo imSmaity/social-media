@@ -45,7 +45,7 @@ function CommentModel({post}){
                 <div className="modal-dialog modal-dialog-scrollable ">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalToggleLabel">Comment</h5>
+                        <h5 className="modal-title" id="exampleModalToggleLabel">Comments</h5>
                     </div>
                     <div className="modal-body">
                         {
