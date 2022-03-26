@@ -56,7 +56,7 @@ function UserList() {
                                         </div>
                                         <div className="col-6" >
                                             <Link to={`/${user._id}`} style={{textDecoration:'none',color:'black'}}>{`${user.fname} ${user.lname}`}</Link>
-                                            <div style={{marginTop:'-1vh',color:'gray',fontSize:'2.5vh'}}>@{user._id}</div>
+                                            <div style={{marginTop:'-1vh',color:'gray',fontSize:'2.3vh'}}>@{user._id}</div>
                                         </div>
                                         <div className="col-4">
                                             <UserStatus user={user}/>

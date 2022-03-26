@@ -1,3 +1,26 @@
+# Social Gold
+A social media app made with MERN stack.
+## Screenshot
+![alt-text](https://i.ibb.co/r7Y6Wkb/Screenshot-490.png)
+
+## Features
+- Authentication
+  - signup
+  - login/logout
+  - reset password
+- Post a text massage
+- Post show
+- Follow/Unfollow
+- Like/Unlike on the post
+- Comment on the post
+- Delete comment
+- Delete post
+- Profile update
+
+## More
+Backend of this project can be found [here](https://github.com/imSmaity/social-gold-api)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

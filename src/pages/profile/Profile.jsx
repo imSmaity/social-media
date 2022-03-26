@@ -61,7 +61,8 @@ function Profile() {
 							<>
 								<EditProfile updateProfile={updateProfile} handleInput={(e)=>handleInput(e)} updateData={updateData}/>
 								<button 
-									style={{height:'6vh',borderRadius:'3vh',color:'blue'}} 
+									className='btn btn-outline-primary btn-sm'
+									style={{height:'5vh',borderRadius:'5vh'}} 
 									data-bs-toggle="modal" 
 									href="#exampleModalToggleEditProfile" 
 								>

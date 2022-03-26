@@ -56,7 +56,7 @@ export default function UserStatus({user}) {
                 <button 
                 id='fu'
                     type='button' 
-                    style={{height:'6vh'}}
+                    className='btn btn-primary btn-sm'
                     onClick={()=>{
                         setUnfollowLoad(true)
                         unfollow(user)
@@ -64,7 +64,7 @@ export default function UserStatus({user}) {
                 <button 
                     id='fu'
                     type='button' 
-                    style={{height:'6vh'}}
+                    className='btn btn-outline-primary btn-sm'
                     onClick={()=>{
                         setFollowLoad(true)
                         following(user) 

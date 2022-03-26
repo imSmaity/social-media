@@ -62,7 +62,7 @@ function PostWrite() {
             <Write postInputHandle={(e)=>postInputHandle(e)} post={post}/>
             <button 
                 type='button' 
-                className='float-end mb-3 post' 
+                className='float-end mb-3 post btn btn-primary' 
                 disabled={post===''?true:false}
                 onClick={()=>{
                     setPostLoading(true)

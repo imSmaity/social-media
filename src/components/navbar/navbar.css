@@ -1,10 +1,11 @@
  .linkl{
-    
+    text-decoration: none;
     color: black;
 }
  .linkl:hover{
-    border: 1px solid gray;
-    border-radius: 3px;
+    border: 1px solid gray;;
+    border-radius: 1vh;
+    padding: 1vh;
 }
 .td{
     text-decoration: none;

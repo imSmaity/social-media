@@ -5,7 +5,10 @@ import { Link } from 'react-router-dom';
 import { upload } from '../../redux/actions';
 import { CommentModel, LikeModel, Loading } from '../components';
 import './postLayout.css'
-
+import { IconContext } from "react-icons";
+import { AiOutlineHeart } from "react-icons/ai";
+import { FcLike } from "react-icons/fc";
+import { FaRegComment } from "react-icons/fa";
 
 function userLikeState(post){
     let like=false
@@ -83,7 +86,7 @@ function PostLayout({posts,postLoading}) {
                             {post.uploderName}
                             <span>{`@${post.uploderUId}`}</span>
                         </Link>
-                        <div>{post.post}</div>
+                        <div id='post-text'>{post.post}</div>
                     </div>
                     <div className="col-2 dropdown" style={{display:userData.uid===post.uploderUId?'inline':'none'}}>
                         <button type='button' className=" dotIcon">...</button>
@@ -117,29 +120,39 @@ function PostLayout({posts,postLoading}) {
                                     userLikeState(post)?
                                     <button 
                                         type='button'  
+                                        className='btn-ds'
                                         onClick={()=>{
                                             setLoadingLike(post._id)
                                             unlike(post)
                                         }
                                     }>
-                                        Unlike
+                                    <IconContext.Provider  value={{ className:'fcicon'}}>
+                                        <FcLike/>
+                                    </IconContext.Provider>
                                     </button>:
                                     <button 
-                                        type='button'  
+                                        type='button' 
+                                        className='btn-ds' 
                                         onClick={()=>{
                                             setLoadingLike(post._id)
                                             like(post)
                                         }
                                     }>
-                                        Like
+                                    <IconContext.Provider  value={{ className:'fcicon'}}>
+                                        <AiOutlineHeart/>
+                                    </IconContext.Provider>
                                     </button>:
-                                    <button><Loading/></button>
+                                    <button className='btn-ds'><Loading/></button>
                                 }
                                 
                             </div>
                             <div className='col-6'>
                                 <CommentModel post={post}  />
-                                <button type='button'  data-bs-toggle="modal" href={`#exampleModalToggle${post._id}`}>Comment</button>
+                                <button type='button'  data-bs-toggle="modal" className='btn-ds' href={`#exampleModalToggle${post._id}`}>
+                                <IconContext.Provider  value={{ className:'fcicon'}}>
+                                    <FaRegComment/>
+                                </IconContext.Provider>
+                                </button>
                             </div>
                         </center>
                     </div>
