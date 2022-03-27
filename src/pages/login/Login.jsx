@@ -57,7 +57,7 @@ function Login() {
                 <div className='mt-4'>
                 {
                     !load?
-                    <button type='button' onClick={()=>{
+                    <button type='button' className='btn btn-dark btn-sm' onClick={()=>{
                         setLoad(true)
                         login()
                     }}>Login</button>:

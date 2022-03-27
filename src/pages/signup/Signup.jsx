@@ -95,7 +95,7 @@ function Signup() {
 					})
 				}
 				<div className='mt-4'>
-					<button type='button' onClick={signup}>Submit</button>
+					<button type='button' onClick={signup}  className='btn btn-dark btn-sm'>Submit</button>
 				</div>
 				<div className='col-md-4 col-1'></div>
 			</center>
