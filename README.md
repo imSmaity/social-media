@@ -1,7 +1,7 @@
 # Social Gold
 A social media app made with MERN stack.
 ## Screenshot
-![alt-text](https://i.ibb.co/r7Y6Wkb/Screenshot-490.png)
+![alt-text](https://i.ibb.co/rtNbHBs/Screenshot-573.png)
 
 ## Features
 - Authentication
