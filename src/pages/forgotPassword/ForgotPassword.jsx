@@ -82,7 +82,7 @@ export default function ForgotPassword() {
     return (
         <div>
             <center>
-                <h3 >My destination</h3>
+                <h3 >Social Gold</h3>
                 {!validUser?
                     <>
                         <div className='mt-5'>

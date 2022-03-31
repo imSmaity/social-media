@@ -61,7 +61,7 @@ function Login() {
                         setLoad(true)
                         login()
                     }}>Login</button>:
-                    <button><Loading/></button>
+                    <button className='btn btn-dark btn-sm'><Loading/></button>
                 }
                     
                 </div>
